@@ -10,14 +10,20 @@ public class Background extends JFrame implements KeyListener
 	static final long serialVersionUID = 0;
 	Image im;
 	Image Back;
+	Image Cloud;
+	Image Boy;
 	int Bck = 0;
-	int xCoordinate = 300;
+	int xCoor = 0;
+	int yCoor = 0;
+	int xBoy = 0;
+	int yBoy = 0;
 	
 	
 	Background()
 	{
 		super("Image example");
 		Back = readImage("Back.png");
+		Boy = readImage("Character.png");
 		JPanel p = new JPanel ();
 		this.setSize(1800, 1000);
 		this.setVisible(true);
@@ -40,7 +46,7 @@ public class Background extends JFrame implements KeyListener
 
 	public void newGame()
 	{
-		xCoordinate = 300;
+		xCoor = 300;
 	
 	}
 	
@@ -83,6 +89,10 @@ public class Background extends JFrame implements KeyListener
 		g.setColor(Color.white);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		g.drawImage(Back, Bck, 0, this);
+		g.drawImage(Boy, xBoy, 550, this);
+		
+		
+		
 	    }
 	
 	public void keyPressed(KeyEvent e)
@@ -100,7 +110,7 @@ public class Background extends JFrame implements KeyListener
 		    }
 		else if (KeyEvent.VK_LEFT == inKey)
 		    {
-			xCoordinate = xCoordinate -10;
+			xCoor = xCoor -10;
 			
 		    }
 		else if (KeyEvent.VK_RIGHT == inKey)
