@@ -1,12 +1,11 @@
 package ProjectS1;
 
 import java.awt.*;
-import java.awt.Color;
 import java.awt.event.*;
+
 import javax.swing.*;
 
-
-public class Background extends JFrame implements KeyListener
+public class SecondBackground extends JFrame implements KeyListener
 {
 	static final long serialVersionUID = 0;
 	Image im;
@@ -14,17 +13,12 @@ public class Background extends JFrame implements KeyListener
 	Image Boy;
 	int Bck = 0;
 	int xCoor = 0;
-	int xCoordinate;
 	int yCoor = 0;
 	int xBoy = 0;
 	int yBoy = 550;
-	int deltaX = 80;
-	Color myColor = Color.decode("0xd9910d");
 	
 	
-	
-	
-	Background()
+	SecondBackground()
 	{
 		super("Image example");
 		Back = readImage("Back.png");
@@ -51,7 +45,7 @@ public class Background extends JFrame implements KeyListener
 
 	public void newGame()
 	{
-		xCoordinate = 300;
+		xCoor = 300;
 	
 	}
 	
@@ -71,20 +65,17 @@ public class Background extends JFrame implements KeyListener
 	{
 		while (true)
 		{
-			if(xCoor < 0){
-				xCoor = xCoor - deltaX;
-			}
-			if(yBoy > 780){
-				yBoy = 780;
+			
+			if(yBoy > 880){
+				yBoy = 880;
 			}
 			
-			if(yBoy < 450){
-				yBoy = 450;
+			if(yBoy < 550){
+				yBoy = 550;
 			}
 			if(xBoy <100){
-				xBoy = 900;
+				xBoy = 870;
 			}
-			
 			
 			makeProgramWait(100);
 			repaint();
@@ -104,15 +95,10 @@ public class Background extends JFrame implements KeyListener
 	
 	public void paintScreen(Graphics g)
 	    {
-		
 		g.setColor(Color.white);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
-		g.drawImage(Back, xCoor, 0, this);
+		g.drawImage(Back, Bck, 0, this);
 		g.drawImage(Boy, xBoy, yBoy, this);
-		g.setColor(myColor);
-		g.setFont(new Font("Comic Sans MS",Font.BOLD,55));
-		g.drawString("Press Space Bar to start", 600, 400);
-		
 		
 		
 		
@@ -135,16 +121,12 @@ public class Background extends JFrame implements KeyListener
 		    {
 			yBoy = yBoy + 110;
 	
+			
 		    }
-		
 		else if (KeyEvent.VK_UP == inKey)
 		    {
 			yBoy = yBoy - 110;
 			
-		    }
-		else if (KeyEvent.VK_SPACE == inKey)
-		    {
-			xCoor -= 1;
 		    }
 		repaint();
 	    }
@@ -159,7 +141,7 @@ public class Background extends JFrame implements KeyListener
 	
 	public static void main(String args[])
 	    {
-		Background app = new Background();
+		SecondBackground app = new SecondBackground();
 	    app.addWindowListener(new WindowAdapter()
 	        {
 	    	public void windowClosing(WindowEvent e)
