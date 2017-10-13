@@ -1,5 +1,4 @@
 package ProjectS1;
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -16,6 +15,9 @@ public class SecondBackground extends JFrame implements KeyListener
 	int yCoor = 0;
 	int xBoy = 0;
 	int yBoy = 550;
+	int deltaX = 55;
+	int xCoordinate; 
+	Color oranged = Color.decode("#FF0000"); /* piece of code that alllows hexd colors.*/
 	
 	
 	SecondBackground()
@@ -45,7 +47,7 @@ public class SecondBackground extends JFrame implements KeyListener
 
 	public void newGame()
 	{
-		xCoor = 300;
+		xCoordinate = 300;
 	
 	}
 	
@@ -64,8 +66,11 @@ public class SecondBackground extends JFrame implements KeyListener
 	public void playGame()
 	{
 		while (true)
-		{
-			
+		{ 
+			/* first if statement allows the background to move, the others that follow are for the character to move*/
+			if (xCoor < 0){
+				xCoor = xCoor - deltaX;
+			}
 			if(yBoy > 880){
 				yBoy = 880;
 			}
@@ -97,8 +102,12 @@ public class SecondBackground extends JFrame implements KeyListener
 	    {
 		g.setColor(Color.white);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
-		g.drawImage(Back, Bck, 0, this);
+		g.drawImage(Back, xCoor, 0, this);
 		g.drawImage(Boy, xBoy, yBoy, this);
+		g.setColor(oranged);
+		g.setFont(new Font("Comic Sans MS",Font.BOLD,55));
+		g.drawString("Press Spacebar to Start", 650 , 455);
+
 		
 		
 		
@@ -126,6 +135,11 @@ public class SecondBackground extends JFrame implements KeyListener
 		else if (KeyEvent.VK_UP == inKey)
 		    {
 			yBoy = yBoy - 110;
+			
+		    }
+		else if (KeyEvent.VK_SPACE == inKey)
+		    {
+			xCoor = xCoor -  1; /* what makes back movable when space bar is pressed*/
 			
 		    }
 		repaint();
