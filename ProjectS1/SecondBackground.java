@@ -10,6 +10,7 @@ public class SecondBackground extends JFrame implements KeyListener
 	Image im;
 	Image Back;
 	Image Boy;
+	Image Envelope;
 	int Bck = 0;
 	int xCoor = 0;
 	int yCoor = 0;
@@ -25,6 +26,7 @@ public class SecondBackground extends JFrame implements KeyListener
 		super("Image example");
 		Back = readImage("Back.png");
 		Boy = readImage("Character.png");
+		Envelope =  readImage("Envelope.png");
 		JPanel p = new JPanel ();
 		this.setSize(1800, 1000);
 		this.setVisible(true);
@@ -71,12 +73,12 @@ public class SecondBackground extends JFrame implements KeyListener
 			if (xCoor < 0){
 				xCoor = xCoor - deltaX;
 			}
-			if(yBoy > 880){
-				yBoy = 880;
+			if(yBoy > 780){
+				yBoy = 780;
 			}
 			
-			if(yBoy < 550){
-				yBoy = 550;
+			if(yBoy < 450){
+				yBoy = 450;
 			}
 			if(xBoy <100){
 				xBoy = 870;
@@ -104,6 +106,7 @@ public class SecondBackground extends JFrame implements KeyListener
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		g.drawImage(Back, xCoor, 0, this);
 		g.drawImage(Boy, xBoy, yBoy, this);
+		g.drawImage(Envelope, 1595, 50, this);
 		g.setColor(oranged);
 		g.setFont(new Font("Comic Sans MS",Font.BOLD,55));
 		g.drawString("Press Spacebar to Start", 650 , 455);
