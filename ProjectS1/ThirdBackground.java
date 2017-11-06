@@ -1,27 +1,32 @@
 package ProjectS1;
 import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.*;
+import java.awt.event.KeyEvent;
+
 
 import javax.swing.*;
 
-public class SecondBackground extends JFrame implements KeyListener
+public class ThirdBackground extends JFrame implements KeyListener
 {
 	static final long serialVersionUID = 0;
 	Image im;
-	Image Back;
-	Image Boy;
+	Image Back; //background Image
+	Image Boy; //Character Image
 	Image Envelope;
-	int Bck = 0;
-	int xCoor = 0;
-	int yCoor = 0;
-	int xBoy = 0;
-	int yBoy = 550;
-	int deltaX = 55;
+	int xCoorB = 0; // X coordinate for background
+	int yCoorB = 0;
+	int xBoy = 0;  // x coordinate of character 
+	int yBoy = 550;  // Y coordinate of character 
+	int deltaX = 55; //extra to make background move 
+	int envelopesN = 5; //NUmber of envelopes
+	int letup = 0;
 	int xCoordinate; 
-	Color oranged = Color.decode("#FF0000"); /* piece of code that alllows hexd colors.*/
+	Color oranged = Color.decode("#FF0000"); /* piece of code that alllows hex colors.*/
+	Color mycolor = Color.decode("#FF0000");
 	
-	
-	SecondBackground()
+	ThirdBackground()
 	{
 		super("Image example");
 		Back = readImage("Back.png");
@@ -70,9 +75,14 @@ public class SecondBackground extends JFrame implements KeyListener
 		while (true)
 		{ 
 			/* first if statement allows the background to move, the others that follow are for the character to move*/
-			if (xCoor < 0){
-				xCoor = xCoor - deltaX;
+			if (xCoorB < 0){
+				xCoorB = xCoorB - deltaX;
 			}
+			
+			//background Redrawn
+		
+			
+			//Character move
 			if(yBoy > 780){
 				yBoy = 780;
 			}
@@ -84,10 +94,13 @@ public class SecondBackground extends JFrame implements KeyListener
 				xBoy = 870;
 			}
 			
+		
 			makeProgramWait(100);
 			repaint();
-		}
+			
+	 }
 	}
+
 	
 	public void paint(Graphics g)
 	    {
@@ -104,12 +117,16 @@ public class SecondBackground extends JFrame implements KeyListener
 	    {
 		g.setColor(Color.white);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
-		g.drawImage(Back, xCoor, 0, this);
+		g.drawImage(Back, xCoorB, yCoorB, this);
 		g.drawImage(Boy, xBoy, yBoy, this);
-		g.drawImage(Envelope, 1595, 50, this);
+		g.drawImage(Envelope, 1495, 50, this);
 		g.setColor(oranged);
 		g.setFont(new Font("Comic Sans MS",Font.BOLD,55));
 		g.drawString("Press Spacebar to Start", 650 , 455);
+		g.setColor(mycolor);
+		g.setFont(new Font("Comic Sans MS",Font.CENTER_BASELINE ,45));
+		g.drawString("X" + (int) envelopesN, 1635 , 95);
+		
 
 		
 	    }
@@ -140,15 +157,18 @@ public class SecondBackground extends JFrame implements KeyListener
 		    }
 		else if (KeyEvent.VK_SPACE == inKey)
 		    {
-			xCoor = xCoor -  1; /* what makes back movable when space bar is pressed*/
+			xCoorB = xCoorB -  1; /* what makes back movable when space bar is pressed*/
 			
 		    }
 		repaint();
 	    }
 	
 	public void keyReleased(KeyEvent e)
+	    
 	    {
+		letup = 1;
 	    }
+	 
 	
 	public void keyTyped(KeyEvent e)
 	    {
@@ -156,7 +176,7 @@ public class SecondBackground extends JFrame implements KeyListener
 	
 	public static void main(String args[])
 	    {
-		SecondBackground app = new SecondBackground();
+		ThirdBackground app = new ThirdBackground();
 	    app.addWindowListener(new WindowAdapter()
 	        {
 	    	public void windowClosing(WindowEvent e)
