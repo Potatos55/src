@@ -1,10 +1,7 @@
 package ProjectS1;
 import java.awt.*;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.*;
-import java.awt.event.KeyEvent;
-
+import java.util.Random;
 
 import javax.swing.*;
 
@@ -17,6 +14,9 @@ public class ThirdBackground extends JFrame implements KeyListener
 	Image Envelope;
 	int xCoorB = 0; // X coordinate for background
 	int yCoorB = 0;
+	Random rand = new Random();
+	int xEnv = rand.nextInt(1400) + 400;
+	int yEnv = rand.nextInt(3) * 110  + 460;
 	int xBoy = 0;  // x coordinate of character 
 	int yBoy = 550;  // Y coordinate of character 
 	int deltaX = 55; //extra to make background move 
@@ -117,8 +117,11 @@ public class ThirdBackground extends JFrame implements KeyListener
 	    {
 		g.setColor(Color.white);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
+		//Background 
 		g.drawImage(Back, xCoorB, yCoorB, this);
+		//Boy
 		g.drawImage(Boy, xBoy, yBoy, this);
+		//Score envelope
 		g.drawImage(Envelope, 1495, 50, this);
 		g.setColor(oranged);
 		g.setFont(new Font("Comic Sans MS",Font.BOLD,55));
@@ -126,7 +129,8 @@ public class ThirdBackground extends JFrame implements KeyListener
 		g.setColor(mycolor);
 		g.setFont(new Font("Comic Sans MS",Font.CENTER_BASELINE ,45));
 		g.drawString("X" + (int) envelopesN, 1635 , 95);
-		
+		//Envelopes
+		g.drawImage(Envelope, xEnv, yEnv, this);
 
 		
 	    }
