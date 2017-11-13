@@ -15,8 +15,8 @@ public class ThirdBackground extends JFrame implements KeyListener
 	int xCoorB = 0; // X coordinate for background
 	int yCoorB = 0;
 	Random rand = new Random();
-	int xEnv = rand.nextInt(1400) + 400;
-	int yEnv = rand.nextInt(3) * 110  + 460;
+	int xEnv = rand.nextInt(1400) + 400; // x coordinate for envelope
+	int yEnv = rand.nextInt(3) * 110  + 460;  //y coordinate for envelope
 	int xBoy = 0;  // x coordinate of character 
 	int yBoy = 550;  // Y coordinate of character 
 	int deltaX = 55; //extra to make background move 
@@ -77,6 +77,8 @@ public class ThirdBackground extends JFrame implements KeyListener
 			/* first if statement allows the background to move, the others that follow are for the character to move*/
 			if (xCoorB < 0){
 				xCoorB = xCoorB - deltaX;
+				xEnv = xEnv - deltaX;
+				
 			}
 			
 			//background Redrawn
