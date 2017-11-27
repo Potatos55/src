@@ -26,6 +26,7 @@ import javax.swing.*;
 		int xCoordinate; 
 		Color oranged = Color.decode("#FF0000"); /* piece of code that alllows hex colors.*/
 		Color mycolor = Color.decode("#FF0000");
+		boolean spacebar = true;
 		
 		FourthBackground()
 		{
@@ -76,7 +77,7 @@ import javax.swing.*;
 			while (true)
 			{ 
 				/* first if statement allows the background to move, the others that follow are for the character to move*/
-				if (xCoorB < 0){
+				if (xCoorB != 0){
 					xCoorB = xCoorB - deltaX;
 					xEnv = xEnv - deltaX;
 					
@@ -84,7 +85,7 @@ import javax.swing.*;
 				
 				//background Redrawn
 				
-				if(xCoorB < -1800){
+				if(xCoorB < -2000){
 					
 					xCoorB = 2; 
 				}
@@ -140,9 +141,13 @@ import javax.swing.*;
 			//Score envelope
 			g.drawImage(Envelope, 1495, 50, this);
 			g.setColor(oranged);
-			g.setFont(new Font("Comic Sans MS",Font.BOLD,55));
-			g.drawString("Press Spacebar to Start", 650 , 455);
-			g.setColor(mycolor);
+			
+				if(spacebar){
+					g.setFont(new Font("Comic Sans MS",Font.BOLD,55));
+					g.drawString("Press Spacebar to Start", 650 , 455);
+					g.setColor(mycolor);
+				}
+				
 			g.setFont(new Font("Comic Sans MS",Font.CENTER_BASELINE ,45));
 			g.drawString("X" + (int) envelopesN, 1635 , 95);
 			//Envelopes
@@ -177,7 +182,11 @@ import javax.swing.*;
 			    }
 			else if (KeyEvent.VK_SPACE == inKey)
 			    {
-				//xCoorB = xCoorB -  1; /* what makes back movable when space bar is pressed*/
+				xCoorB = xCoorB -  1; /* what makes back movable when space bar is pressed*/
+				
+				spacebar = false; 
+				
+				
 				
 			    }
 			
