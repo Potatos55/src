@@ -91,7 +91,7 @@ import javax.swing.*;
 			
 				//Intersecting with varible and adding it to the score
 				Rectangle kract= new Rectangle(xEnv, yEnv, 125, 50);
-				Rectangle rect= new Rectangle(xBoy, yBoy, 125, 50);
+				Rectangle rect= new Rectangle(xBoy, yBoy, 50, 150);
 				 if(kract.intersects(rect)== true)
 				 {
 					 envelopesN = envelopesN +1; 
@@ -100,7 +100,7 @@ import javax.swing.*;
 				
 				//Character move
 				if(yBoy > 780){
-					yBoy = 780;
+					yBoy = 780;   
 				}
 				
 				if(yBoy < 450){
@@ -177,7 +177,7 @@ import javax.swing.*;
 			    }
 			else if (KeyEvent.VK_SPACE == inKey)
 			    {
-				xCoorB = xCoorB -  1; /* what makes back movable when space bar is pressed*/
+				//xCoorB = xCoorB -  1; /* what makes back movable when space bar is pressed*/
 				
 			    }
 			
