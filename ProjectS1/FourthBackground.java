@@ -26,7 +26,7 @@ import javax.swing.*;
 		int xCoordinate; 
 		Color oranged = Color.decode("#FF0000"); /* piece of code that alllows hex colors.*/
 		Color mycolor = Color.decode("#FF0000");
-		boolean spacebar = true;
+		boolean spacebar = true; //for spacebar text
 		
 		FourthBackground()
 		{
@@ -142,7 +142,7 @@ import javax.swing.*;
 			g.drawImage(Envelope, 1495, 50, this);
 			g.setColor(oranged);
 			
-				if(spacebar){
+				if(spacebar){  //for making texT "PRESS SPACEBAR TO START" DISAPEAR
 					g.setFont(new Font("Comic Sans MS",Font.BOLD,55));
 					g.drawString("Press Spacebar to Start", 650 , 455);
 					g.setColor(mycolor);
@@ -184,7 +184,7 @@ import javax.swing.*;
 			    {
 				xCoorB = xCoorB -  1; /* what makes back movable when space bar is pressed*/
 				
-				spacebar = false; 
+				spacebar = false; //makes my texT "PRESS SPACEBAR TO START" DISAPEAR
 				
 				
 				
