@@ -13,6 +13,7 @@ import javax.swing.*;
 		Image Back; //background Image
 		Image Boy; //Character Image
 		Image Envelope;
+		Image display1;
 		int xCoorB = 0; // X coordinate for background
 		int yCoorB = 0;
 		Random rand = new Random();
@@ -26,7 +27,9 @@ import javax.swing.*;
 		int xCoordinate; 
 		Color oranged = Color.decode("#FF0000"); /* piece of code that alllows hex colors.*/
 		Color mycolor = Color.decode("#FF0000");
-		boolean spacebar = true; //for spacebar text
+		boolean spacebar = true; //for spacebar text   
+		boolean enter = true;
+		int changescreen = 0;
 		
 		FourthBackground()
 		{
@@ -34,6 +37,7 @@ import javax.swing.*;
 			Back = readImage("Back.png");
 			Boy = readImage("Character.png");
 			Envelope =  readImage("Envelope.png");
+			display1 = readImage("displayone.jpg");
 			JPanel p = new JPanel ();
 			this.setSize(1800, 1000);
 			this.setVisible(true);
@@ -142,18 +146,28 @@ import javax.swing.*;
 			g.drawImage(Envelope, 1495, 50, this);
 			g.setColor(oranged);
 			
+		
+			
 				if(spacebar){  //for making texT "PRESS SPACEBAR TO START" DISAPEAR
 					g.setFont(new Font("Comic Sans MS",Font.BOLD,55));
 					g.drawString("Press Spacebar to Start", 650 , 455);
-					g.setColor(mycolor);
+					g.setColor(mycolor); 
 				}
-				
+
 			g.setFont(new Font("Comic Sans MS",Font.CENTER_BASELINE ,45));
 			g.drawString("X" + (int) envelopesN, 1635 , 95);
 			//Envelopes
 			g.drawImage(Envelope, xEnv, yEnv, this);
 
+			g.drawImage(display1, 0, 0, this);
+			g.setColor(oranged);
 			
+			if(enter){
+			g.setFont(new Font("Comic Sans MS",Font.BOLD,55));
+			g.drawString("Help Jay Collect His Bill!", 650 , 455);
+			g.drawString("Press the Enter key to begin", 650 , 555);
+			g.setColor(mycolor);
+		    }
 		    }
 		
 		public void keyPressed(KeyEvent e)
@@ -186,9 +200,15 @@ import javax.swing.*;
 				
 				spacebar = false; //makes my texT "PRESS SPACEBAR TO START" DISAPEAR
 				
-				
-				
 			    }
+			else if (KeyEvent.VK_ENTER == inKey)
+				{
+			
+				
+				display1 = null; 
+				enter = false;
+			    }
+			
 			
 			repaint();
 		    	}
