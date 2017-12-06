@@ -108,9 +108,9 @@ import javax.swing.*;
 					yBoy = 780;   
 				}
 				
-				if(yBoy < 450){
-					yBoy = 450;
-				}
+				if(yBoy < 438){
+					yBoy = 438;
+				  }
 				if(xBoy <100){
 					xBoy = 470;
 				}
@@ -145,6 +145,7 @@ import javax.swing.*;
 			//Score envelope
 			g.drawImage(Envelope, 1495, 50, this);
 			g.setColor(oranged);
+			//g.drawLine(0, 870, 870, 870); 
 			
 		
 			
@@ -198,7 +199,7 @@ import javax.swing.*;
 			    {
 				xCoorB = xCoorB -  1; /* what makes back movable when space bar is pressed*/
 				
-				spacebar = false; //makes my texT "PRESS SPACEBAR TO START" DISAPEAR
+				spacebar = false; //makes my texT "PRESS SPACEBAR TO START" DISAPEAR0
 				
 			    }
 			else if (KeyEvent.VK_ENTER == inKey)
