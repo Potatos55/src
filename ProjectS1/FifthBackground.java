@@ -19,7 +19,7 @@ public class FifthBackground extends JFrame implements KeyListener
 	int yCoorB = 0;
 	Random rand = new Random();
 	int xEnv = rand.nextInt(1400) + 400; // x coordinate for envelope
-	int yEnv = rand.nextInt(3) * 110  + 460;  //y coordinate for envelope
+	int yEnv = rand.nextInt(3) * 125  + 460;  //y coordinate for envelope
 	int xBoy = 0;  // x coordinate of character 
 	int yBoy = 550;  // Y coordinate of character 
 	int deltaX = 55; //extra to make background move 
@@ -98,11 +98,12 @@ public class FifthBackground extends JFrame implements KeyListener
 		
 			//Intersecting with varible and adding it to the score
 			Rectangle kract= new Rectangle(xEnv, yEnv, 125, 50);
-			Rectangle rect= new Rectangle(xBoy, yBoy, 50, 150);
+			Rectangle rect= new Rectangle(xBoy, yBoy, 50, 100);
 			 if(kract.intersects(rect)== true)
 			 {
 				 envelopesN = envelopesN +1; 
-				 Envelope = null; 
+				 xEnv = rand.nextInt(1800) + 1700; 
+				 yEnv = rand.nextInt(3) * 110  + 460;
 				 
 			 }
 			
@@ -162,7 +163,7 @@ public class FifthBackground extends JFrame implements KeyListener
 		g.drawString("X" + (int) envelopesN, 1635 , 95);
 		//Envelopes
 		
-		for(int i=1; i<20; i++){ 
+
 		g.drawImage(Envelope, xEnv, yEnv, this);
 		
 		
@@ -175,7 +176,8 @@ public class FifthBackground extends JFrame implements KeyListener
 		g.drawString("Help Jay Collect His Bills!", 650 , 455);
 		g.drawString("Press the Enter key to begin", 650 , 555);
 		g.setColor(mycolor);
-	    }
+		}
+		
 	    }
 	
 	public void keyPressed(KeyEvent e)
