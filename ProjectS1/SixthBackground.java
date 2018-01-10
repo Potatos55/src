@@ -9,33 +9,33 @@ import java.util.Random;
 import javax.swing.*;
 
 	public class SixthBackground extends JFrame implements KeyListener
-	{
-		static final long serialVersionUID = 0;
-		Image im;
-		Image Back; //background Image
-		Image Boy; //Character Image
-		Image Envelope;
-		Image display1;
-		int xCoorB = 0; // X coordinate for background
-		int yCoorB = 0;
-		Random rand = new Random();
-		int xEnv = rand.nextInt(1400) + 400; // x coordinate for envelope
-		int yEnv = rand.nextInt(3) * 125  + 460;  //y coordinate for envelope
-		int xObs = rand.nextInt(1400) + 380; // x coordinate for obstacle
-		int yObs = rand.nextInt(3) * 125  + 460;  //y coordinate for obstacle
-		int xBoy = 0;  // x coordinate of character 
-		int yBoy = 550;  // Y coordinate of character 
-		int deltaX = 55; //extra to make background move 
-		int envelopesN = 0; //NUmber of envelopes
-		int letup = 0;
-		boolean envelopes = true;
-		int xCoordinate; 
-		Color oranged = Color.decode("#FF0000"); /* piece of code that alllows hex colors.*/
-		Color mycolor = Color.decode("#FF0000");
-		boolean spacebar = true; //for spacebar text   
-		boolean enter = true;
-		int changescreen = 0;
-		
+		{
+			static final long serialVersionUID = 0;
+			Image im;
+			Image Back; //background Image
+			Image Boy; //Character Image
+			Image Envelope;
+			Image display1;
+			int xCoorB = 0; // X coordinate for background
+			int yCoorB = 0;
+			Random rand = new Random();
+			int xEnv = rand.nextInt(1400) + 400; // x coordinate for envelope
+			int yEnv = rand.nextInt(3) * 125  + 460;  //y coordinate for envelope
+			int xObs = rand.nextInt(1400) + 380; // x coordinate for obstacle
+			int yObs = rand.nextInt(3) * 125  + 460;  //y coordinate for obstacle
+			int xBoy = 0;  // x coordinate of character 
+			int yBoy = 550;  // Y coordinate of character 
+			int deltaX = 55; //extra to make background move 
+			int envelopesN = 0; //NUmber of envelopes
+			int letup = 0;
+			boolean envelopes = true;
+			int xCoordinate; 
+			Color oranged = Color.decode("#FF0000"); /* piece of code that alllows hex colors.*/
+			Color mycolor = Color.decode("#FF0000");
+			boolean spacebar = true; //for spacebar text   
+			boolean enter = true;
+			int changescreen = 0;
+											
 		SixthBackground()
 		{
 			super("Image example");
