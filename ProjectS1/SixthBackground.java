@@ -24,14 +24,14 @@ import javax.swing.*;
 			int xObs = rand.nextInt(1400) + 380; // x coordinate for obstacle
 			int yObs = rand.nextInt(3) * 125  + 460;  //y coordinate for obstacle
 			int xBoy = 0;  // x coordinate of character 
-			int yBoy = 550;  // Y coordinate of character 
+			int yBoy = 540;  // Y coordinate of character 
 			int deltaX = 55; //extra to make background move 
 			int envelopesN = 0; //NUmber of envelopes
 			int letup = 0;
 			boolean envelopes = true;
 			int xCoordinate; 
-			Color oranged = Color.decode("#FF0000"); /* piece of code that alllows hex colors.*/
-			Color mycolor = Color.decode("#FF0000");
+			Color oranged = Color.decode("#2F0049"); /* piece of code that alllows hex colors.*/
+			Color mycolor = Color.decode("#2F0049");
 			boolean spacebar = true; //for spacebar text   
 			boolean enter = true;
 			int changescreen = 0;
@@ -42,7 +42,7 @@ import javax.swing.*;
 			Back = readImage("Back.png");
 			Boy = readImage("Character.png");
 			Envelope =  readImage("Envelope.png");
-			display1 = readImage("displayone.jpg");
+			display1 = readImage("displayone.png");
 			JPanel p = new JPanel ();
 			this.setSize(1800, 1000);
 			this.setVisible(true);
@@ -114,20 +114,15 @@ import javax.swing.*;
 				 
 				 if(rect.intersects(obs)== true)
 				 {
-					 xBoy = xBoy - 20;
+					 xBoy = xBoy - 40;
 				 }
 				
 				//Character move
-				if(yBoy > 780){
-					yBoy = 780;   
-				}
 				
-				if(yBoy < 438){
-					yBoy = 438;
-				  }
 				if(xBoy <100){
 					xBoy = 470;
 				}
+				
 				
 			
 				makeProgramWait(100);
@@ -156,15 +151,36 @@ import javax.swing.*;
 			g.drawImage(Back, xCoorB, yCoorB, this);
 			//Boy
 			g.drawImage(Boy, xBoy, yBoy, this);
+			 //boy's shoadow
+			g.setColor(Color.orange);
+			g.fillOval(xBoy + 15, yBoy + 90, 60, 10);
+			g.setColor(Color.red);
+			g.fillOval(xBoy + 15, yBoy + 89, 60, 10);
+			g.setColor(Color.black);
+			g.fillOval(xBoy + 19, yBoy + 98, 10, 10);
+			g.fillOval(xBoy + 19, yBoy + 98, 10, 10);
+			g.fillOval(xBoy + 55, yBoy + 98, 10, 10);
+			g.fillOval(xBoy + 5, yBoy + 98, 10, 10);
+			
 			//Score envelope
 			g.drawImage(Envelope, 1495, 50, this);
 			g.setColor(oranged);
 			
 			
+			//Level Passed
+			
+			if(envelopesN == 5){
+				g.setFont(new Font("Comic Sans MS",Font.BOLD,55));
+				g.drawString("Congratulations! Jay can now pay his bills!!", 400 , 405);
+				g.setColor(mycolor); 
+				
+				xCoorB = 0;
+			}
+			
 			
 				if(spacebar){  //for making texT "PRESS SPACEBAR TO START" DISAPEAR
 					g.setFont(new Font("Comic Sans MS",Font.BOLD,55));
-					g.drawString("Press Spacebar to Start", 650 , 455);
+					g.drawString("Press Spacebar to Start", 650 , 405);
 					g.setColor(mycolor); 
 				}
 
@@ -196,12 +212,14 @@ import javax.swing.*;
 			g.drawImage(display1, 0, 0, this);
 			g.setColor(oranged);
 			
-			if(enter){
+			/*if(enter){
 			g.setFont(new Font("Comic Sans MS",Font.BOLD,55));
 			g.drawString("Help Jay Collect His Bills!", 650 , 455);
 			g.drawString("Press the Enter key to begin", 650 , 555);
 			g.setColor(mycolor);
-			}
+			}*/
+			
+			
 			
 		    }
 		
@@ -222,11 +240,18 @@ import javax.swing.*;
 			    {
 				yBoy = yBoy + 110;
 		
-				
+				if(yBoy > 780){
+					yBoy = 780;   
+				}
 			    }
 			else if (KeyEvent.VK_UP == inKey)
 			    {
 				yBoy = yBoy - 110;
+				
+				
+				if(yBoy < 438){
+					yBoy = 438;
+				  }
 				
 			    }
 			else if (KeyEvent.VK_SPACE == inKey)
