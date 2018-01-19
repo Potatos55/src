@@ -6,6 +6,7 @@
 import java.awt.event.*;
 import java.util.Random;
 
+
 import javax.swing.*;
 
 	public class SixthBackground extends JFrame implements KeyListener
@@ -15,6 +16,9 @@ import javax.swing.*;
 			Image Back; //background Image
 			Image Boy; //Character Image
 			Image Envelope;
+			Image Rock;
+			Image TB = null;
+			Image textBubble = null;
 			Image display1;
 			int xCoorB = 0; // X coordinate for background
 			int yCoorB = 0;
@@ -22,7 +26,7 @@ import javax.swing.*;
 			int xEnv = rand.nextInt(1400) + 400; // x coordinate for envelope
 			int yEnv = rand.nextInt(3) * 125  + 460;  //y coordinate for envelope
 			int xObs = rand.nextInt(1400) + 380; // x coordinate for obstacle
-			int yObs = rand.nextInt(3) * 125  + 460;  //y coordinate for obstacle
+			int yObs = rand.nextInt(3) * 125  + 480;  //y coordinate for obstacle
 			int xBoy = 0;  // x coordinate of character 
 			int yBoy = 540;  // Y coordinate of character 
 			int deltaX = 55; //extra to make background move 
@@ -43,6 +47,8 @@ import javax.swing.*;
 			Boy = readImage("Character.png");
 			Envelope =  readImage("Envelope.png");
 			display1 = readImage("displayone.png");
+			Rock = readImage("rock.png");
+			TB = readImage("textbubble.png");
 			JPanel p = new JPanel ();
 			this.setSize(1800, 1000);
 			this.setVisible(true);
@@ -111,10 +117,19 @@ import javax.swing.*;
 					 yEnv = rand.nextInt(3) * 110  + 460;
 					 
 				 }
+				 // what makes the envelope reappear when the boy doesn't touch the envelope
+
+				 else if (kract.intersects(rect)== false && xEnv < -50)
+				 {
+					 xEnv = rand.nextInt(1800) + 1700; 
+					 yEnv = rand.nextInt(3) * 110  + 460;
+					 
+				 }
 				 
 				 if(rect.intersects(obs)== true)
 				 {
-					 xBoy = xBoy - 40;
+					 xBoy = xBoy - 300;
+	
 				 }
 				
 				//Character move
@@ -158,10 +173,8 @@ import javax.swing.*;
 			g.fillOval(xBoy + 15, yBoy + 89, 60, 10);
 			g.setColor(Color.black);
 			g.fillOval(xBoy + 19, yBoy + 98, 10, 10);
-			g.fillOval(xBoy + 19, yBoy + 98, 10, 10);
 			g.fillOval(xBoy + 55, yBoy + 98, 10, 10);
-			g.fillOval(xBoy + 5, yBoy + 98, 10, 10);
-			
+	
 			//Score envelope
 			g.drawImage(Envelope, 1495, 50, this);
 			g.setColor(oranged);
@@ -196,29 +209,17 @@ import javax.swing.*;
 			
 			//code for drawing obstacles
 			
-			g.setColor(Color.gray);
-			g.fillOval(xObs, yObs, 86 ,76);
-			g.fillOval(xObs +25, yObs, 86 ,76);
-			g.fillOval(xObs +15, yObs -40, 76 ,56);	
-			
-			//drawing obstacle's shadow
-			g.setColor(Color.lightGray);
-			g.fillOval(xObs +10, yObs, 76 ,66);
-			g.fillOval(xObs +35, yObs, 86 ,64);
-			g.fillOval(xObs +15, yObs -40, 66, 46);
-			
 
+			g.drawImage(Rock, xObs, yObs, this);
+			g.drawImage(Rock, xObs, yObs, this);
+			g.drawImage(Rock, xObs, yObs, this);
 			
+			if(textBubble != null){
+			g.drawImage(textBubble, xBoy, yBoy, this);
+			}
 			g.drawImage(display1, 0, 0, this);
 			g.setColor(oranged);
-			
-			/*if(enter){
-			g.setFont(new Font("Comic Sans MS",Font.BOLD,55));
-			g.drawString("Help Jay Collect His Bills!", 650 , 455);
-			g.drawString("Press the Enter key to begin", 650 , 555);
-			g.setColor(mycolor);
-			}*/
-			
+
 			
 			
 		    }
